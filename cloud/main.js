@@ -1,24 +1,15 @@
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!");
-});
-
-Parse.Cloud.define("averageStars", function(request, response) {
-    var query = new Parse.Query("Article");
-    query.equalTo("click", request.params.click);
-    query.find({
-        success: function(results) {
-            var sum = 0;
-            console.log(results);
-            for (var i = 0; i < results.length; ++i) {
-                sum += results[i].get("click");
-            }
-            response.success(results.length);
+Parse.Cloud.job("lineup", function(request, status) {
+    Parse.Cloud.httpRequest({
+        url: 'http://animemap.net/api/table/tokyo.json',
+        success: function(response) {
+            var body = JSON.parse(response.text);
+            console.log(body);
+            status.success("parse animap");
         },
-        error: function() {
-            response.error("moview lookup failed");
+        error: function(response) {
+            status.error(response);
         }
     });
 });
