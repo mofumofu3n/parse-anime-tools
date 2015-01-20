@@ -2,6 +2,12 @@
 
 ### Usage
 
+1. install npm modules
+
+```
+$ npm install --prefix ./cloud
+```
+
 1. install parse command
 
 ```
