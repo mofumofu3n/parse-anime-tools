@@ -2,11 +2,6 @@
 
 ### Usage
 
-1. install npm modules
-
-```
-$ npm install --prefix ./cloud
-```
 
 1. install parse command
 
@@ -37,4 +32,16 @@ curl -s https://www.parse.com/downloads/cloud_code/installer.sh | sudo /bin/bash
 
 ```
 $ parse deploy
+```
+
+1. check log
+
+```
+$ parse log
+```
+
+1. auto deploy in develop mode
+
+```
+$ parse develop
 ```
